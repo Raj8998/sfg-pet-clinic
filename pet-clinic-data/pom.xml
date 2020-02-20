@@ -3,11 +3,11 @@
     <parent>
         <artifactId>sfg-pet-clinic</artifactId>
         <groupId>springframework</groupId>
-        <version>0.0.1</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>pet-clinic-data</artifactId>
-  <version>y</version>
+  <version>1.1-SNAPSHOT</version>
 
     <properties>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
