@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Owner Index Page</title>
 </head>
 <body>
-<!--/*@thymesVar id="owner" type="springframework.sfgpetclinic.model.Owner"*/-->
-<h1 th:text="'Owners List Here...'">Owners list here:</h1>
-<table>
+
+<h2 th:text="'List of Owners'">Owners list here:</h2>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th style="width: 150px;">ID</th>
+        <th style="width: 150px;">First Name</th>
+        <th style="width: 150px;">Last Name</th>
 
     </tr>
     </thead>
     <tbody>
+    <!--/*@thymesVar id="owners" type="java.util.Set<springframework.sfgpetclinic.model.Owner>"*/-->
     <tr th:each="owner : ${owners}">
         <td th:text="${owner?.id}">ID</td>
         <td th:text="${owner?.firstName}">First Name</td>
