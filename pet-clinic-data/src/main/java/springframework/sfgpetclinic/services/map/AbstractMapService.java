@@ -1,6 +1,5 @@
 package springframework.sfgpetclinic.services.map;
 
-import javafx.scene.effect.SepiaTone;
 import springframework.sfgpetclinic.model.BaseEntity;
 
 import java.util.*;
@@ -19,18 +18,11 @@ public abstract class AbstractMapService<T extends BaseEntity,ID extends Long> {
 
     T save(T object)
     {
-        if(object != null)
-        {
             if(object.getId() == null)
             {
                 object.setId(getNextId());
             }
             map.put(object.getId(),object);
-        }
-        else
-        {
-            throw new RuntimeException("Objects cannot be null");
-        }
 
         return object;
     }
