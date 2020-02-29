@@ -6,10 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexPageController {
-    @RequestMapping({"","/","index","index.html"})
+    @RequestMapping({"","/","/index","/index.html"})
     public String getIndex(Model model)
     {
         model.addAttribute("welcome","Welcome to Pet Clinic Web-App");
         return "index";
     }
+
+    @RequestMapping("/oups")
+    public String getErrorPage()
+    {
+        return "notimplemented";
+    }
+
+//    @RequestMapping({"/vets","/vets.html"})
+//    public String getVetsPage()
+//    {
+//        return "vets/index";
+//    }
 }

@@ -54,7 +54,7 @@ public class DataLoader implements CommandLineRunner {
         Specialty savedSurgery = specialtyService.save(surgery);
 
         Specialty dentistry = new Specialty();
-        dentistry.setDescription("dentistry");
+        dentistry.setDescription("Dentistry");
         Specialty savedDentistry = specialtyService.save(dentistry);
 
 
@@ -90,6 +90,7 @@ public class DataLoader implements CommandLineRunner {
         v1.setFirstName("Raj");
         v1.setLastName("Pastagiya");
         v1.getSpecialties().add(savedRadiology);
+        v1.getSpecialties().add(savedDentistry);
 
         vetServiceMap.save(v1);
 
