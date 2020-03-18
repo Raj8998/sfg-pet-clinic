@@ -2,6 +2,8 @@ package springframework.sfgpetclinic.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -21,6 +23,17 @@ public class Pet extends BaseEntity{
 
     @Column(name = "birth_date")
     private LocalDate date;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
+    private Set<Visits> visits = new HashSet<>();
+
+    public Set<Visits> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visits> visits) {
+        this.visits = visits;
+    }
 
     public String getName() {
         return name;
