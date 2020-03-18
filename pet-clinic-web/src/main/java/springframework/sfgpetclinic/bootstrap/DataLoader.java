@@ -4,26 +4,25 @@ package springframework.sfgpetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import springframework.sfgpetclinic.model.*;
-import springframework.sfgpetclinic.services.PetTypeService;
-import springframework.sfgpetclinic.services.SpecialtyService;
-import springframework.sfgpetclinic.services.map.OwnerServiceMap;
-import springframework.sfgpetclinic.services.map.VetServiceMap;
+import springframework.sfgpetclinic.services.*;
 
 import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerServiceMap ownerServiceMap;
-    private final VetServiceMap vetServiceMap;
+    private final OwnerService ownerService;
+    private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap, PetTypeService petTypeService, SpecialtyService specialtyService) {
-        this.ownerServiceMap = ownerServiceMap;
-        this.vetServiceMap = vetServiceMap;
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -70,19 +69,29 @@ public class DataLoader implements CommandLineRunner {
         o1.getPets().add(rajsPet);
 
 
-        ownerServiceMap.save(o1);
+        ownerService.save(o1);
 
         Owner o2 = new Owner();
         o2.setFirstName("Sheraram");
         o2.setLastName("Prajapat");
 
         Pet sherasPet = new Pet();
-        sherasPet.setPetType(savedPetTypeDog);
+        sherasPet.setPetType(savedPetTypeCat);
         sherasPet.setDate(LocalDate.now());
         sherasPet.setOwner(o2);
         sherasPet.setName("Sheru");
         o2.getPets().add(sherasPet);
-        ownerServiceMap.save(o2);
+        ownerService.save(o2);
+
+//        Visits catVisit = new Visits();
+//        catVisit.setPet(sherasPet);
+//        catVisit.setDate(LocalDate.now());
+//        catVisit.setDescription("Sheraram got no chill");
+//
+//        visitService.save(catVisit);
+
+
+
 
         System.out.println("Owners loaded...!!!");
 
@@ -92,15 +101,19 @@ public class DataLoader implements CommandLineRunner {
         v1.getSpecialties().add(savedRadiology);
         v1.getSpecialties().add(savedDentistry);
 
-        vetServiceMap.save(v1);
+        vetService.save(v1);
 
         Vet v2 = new Vet();
         v2.setFirstName("Hardik");
         v2.setLastName("Soni");
         v2.getSpecialties().add(savedSurgery);
 
-        vetServiceMap.save(v2);
+        vetService.save(v2);
 
         System.out.println("Vets loaded...!!!");
+
+
+
+        System.out.println("Visits loaded...!!!");
     }
 }
