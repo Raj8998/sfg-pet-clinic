@@ -83,12 +83,12 @@ public class DataLoader implements CommandLineRunner {
         o2.getPets().add(sherasPet);
         ownerService.save(o2);
 
-//        Visits catVisit = new Visits();
-//        catVisit.setPet(sherasPet);
-//        catVisit.setDate(LocalDate.now());
-//        catVisit.setDescription("Sheraram got no chill");
-//
-//        visitService.save(catVisit);
+        Visits catVisit = new Visits();
+        catVisit.setPet(sherasPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sheraram got no chill");
+
+        visitService.save(catVisit);
 
 
 
